@@ -67,10 +67,8 @@ repairEquipment()
 
     Sleep, 2500
 
-    sendControlAndSleep("Alt down", 200)
-    sendControlAndSleep("p", 200)
-    sendControlAndSleep("Alt up", 200)
-
+    sendControlAndSleep("{F8}", 200)
+    
     
 
     gdipToken := Gdip_Startup()
@@ -93,7 +91,7 @@ sendControlAndSleep(key, sleepTime := 0)
     If (processNameOfWindow = "LOSTARK.exe")
     {
         ControlClick, , LOST ARK, , R, 1, % "NA y" . (A_ScreenHeight / 2) . " x" . (A_ScreenWidth / 2 + 150)
-        ControlSend, , {%key%}, LOST ARK
+        ControlSend, , %key%, LOST ARK
         If (!sleepTime)
         {
             Random, sleepRandom, 220, 500
@@ -147,7 +145,10 @@ activateDummy:
 Return
 
 F9::
-EXIT_LABEL: ; be really sure the script will shutdown GDIP
 Gdip_Shutdown(gdipToken)
 Reload
+
+EXIT_LABEL: ; be really sure the script will shutdown GDIP
+Gdip_Shutdown(gdipToken)
+ExitApp
 Return
