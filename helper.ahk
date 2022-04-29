@@ -68,7 +68,7 @@ repairEquipment()
     Sleep, 2500
 
     sendControlAndSleep("{F8}", 200)
-    
+
     
 
     gdipToken := Gdip_Startup()
@@ -82,7 +82,6 @@ repairEquipment()
     MsgBox, % "Returned: " RET "`n`n" LIST
 
 
-
 }
 
 sendControlAndSleep(key, sleepTime := 0)
@@ -90,7 +89,7 @@ sendControlAndSleep(key, sleepTime := 0)
     WinGet, processNameOfWindow, ProcessName, LOST ARK
     If (processNameOfWindow = "LOSTARK.exe")
     {
-        ControlClick, , LOST ARK, , R, 1, % "NA y" . (A_ScreenHeight / 2) . " x" . (A_ScreenWidth / 2 + 150)
+        ; ControlClick, , LOST ARK, , R, 1, % "NA y" . (A_ScreenHeight / 2) . " x" . (A_ScreenWidth / 2 + 150)
         ControlSend, , %key%, LOST ARK
         If (!sleepTime)
         {
